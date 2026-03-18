@@ -3,39 +3,67 @@
 Sakenov Aldiyar
 IT-2501
 Task-1.Print Digits of a Number.
-<img width="1007" height="492" alt="Снимок экрана 2026-03-18 в 23 06 28" src="https://github.com/user-attachments/assets/9d2eb869-32be-494c-99a8-9feabe81debc" />
+<img width="1353" height="626" alt="image" src="https://github.com/user-attachments/assets/91cfbb47-c0ca-4533-b29b-8971f31f02d7" />
+
+
+
 in function,printDigits i divide entered number to 10,to define  how many digits there are and what numbers.
+
+
 Task-2.Average of Elements.
-<img width="985" height="699" alt="Снимок экрана 2026-03-18 в 23 09 45" src="https://github.com/user-attachments/assets/ead9ffe0-d37e-46a4-8b32-a543cf47a48d" />
+<img width="1353" height="741" alt="image" src="https://github.com/user-attachments/assets/5724ef89-477d-4457-aa9a-dee01a14b55b" />
+
 
 firstly,i sumed all the numbers.Secondly, divided into the numbers of element(basically found average of array.)
 Task-3.Prime number check 1)
-<img width="985" height="472" alt="Снимок экрана 2026-03-18 в 23 12 35" src="https://github.com/user-attachments/assets/7d897edd-e99d-4598-bf50-72363d4ab5bb" />
-2)<img width="985" height="436" alt="Снимок экрана 2026-03-18 в 23 13 16" src="https://github.com/user-attachments/assets/8c4b9613-98e3-42ae-b1d3-fe0199c20afc" />
+<img width="1353" height="567" alt="image" src="https://github.com/user-attachments/assets/618bf173-d32e-466b-a83a-528d7df40aad" />
+
+2)<img width="1353" height="609" alt="Снимок экрана 2026-03-19 в 00 00 55" src="https://github.com/user-attachments/assets/fbb6bc7c-c771-428a-97ff-367f0a1e8712" />
+
+
 
 Task-4.Factorial
-<img width="985" height="372" alt="Снимок экрана 2026-03-18 в 23 15 11" src="https://github.com/user-attachments/assets/9e77082a-d74c-4e9c-a5b9-99c82e261fcc" />
-TAsk-5.Fibonacci 1)
-<img width="985" height="398" alt="Снимок экрана 2026-03-18 в 23 20 10" src="https://github.com/user-attachments/assets/19f6ebf1-b4f9-4542-9095-9ef8c3723af2" />
-2)<img width="985" height="398" alt="Снимок экрана 2026-03-18 в 23 21 06" src="https://github.com/user-attachments/assets/173799de-d95c-4daf-b3b7-d86c3bfef3c9" />
+<img width="1353" height="542" alt="image" src="https://github.com/user-attachments/assets/f341b432-2c58-4207-80d4-9b1facf5c974" />
+
+Task-5.Fibonacci 1)
+<img width="1353" height="502" alt="image" src="https://github.com/user-attachments/assets/3b01ad7c-cbb7-436b-b5be-659d4ab94111" />
+
+2)<img width="1353" height="502" alt="image" src="https://github.com/user-attachments/assets/804ea8bc-15a5-46ac-b038-22d1fe2a55bb" />
+
 
 Task-6.Power function
-<img width="985" height="407" alt="Снимок экрана 2026-03-18 в 23 22 36" src="https://github.com/user-attachments/assets/3122df1b-5660-46a5-ab05-2eaad8df7f90" />
+<img width="1353" height="545" alt="image" src="https://github.com/user-attachments/assets/80bef095-f2c0-4a7a-9f7d-aa1d72f4971b" />
+
+
+
 Task-7.Reverse output
-<img width="1069" height="440" alt="Снимок экрана 2026-03-18 в 23 24 41" src="https://github.com/user-attachments/assets/19a11491-0db9-4962-b058-6150d4760c20" />
+<img width="1353" height="563" alt="image" src="https://github.com/user-attachments/assets/1ce14353-56bb-4612-8765-4c04d0902dfd" />
+
+
+
 
 Task-8.Check digits in String 1)
-<img width="1069" height="417" alt="Снимок экрана 2026-03-18 в 23 27 23" src="https://github.com/user-attachments/assets/b46932aa-690d-4059-9437-bedaea335253" />
+<img width="1353" height="576" alt="image" src="https://github.com/user-attachments/assets/6a2e4a90-f67c-4ad1-8840-ddb4852817eb" />
+
+
+
 2)
-<img width="1069" height="424" alt="Снимок экрана 2026-03-18 в 23 28 03" src="https://github.com/user-attachments/assets/b8e7bb8e-d771-4dd5-b12d-cfeeaaeaf2f4" />
+
+
+<img width="1353" height="576" alt="image" src="https://github.com/user-attachments/assets/542ae10f-eb61-4c9f-a2bc-53af4d6b9db9" />
+
 
 Task-9. Count characters in a string 1)
-<img width="1069" height="412" alt="Снимок экрана 2026-03-18 в 23 29 21" src="https://github.com/user-attachments/assets/b7763296-645d-4ef0-97bc-3a82a319edca" />
-2)
-<img width="1069" height="383" alt="Снимок экрана 2026-03-18 в 23 29 52" src="https://github.com/user-attachments/assets/5c3c1c07-41b1-41b9-967c-87e61c6874c6" />
+<img width="1353" height="505" alt="image" src="https://github.com/user-attachments/assets/c8f38a9b-0164-423c-bc91-da1589387115" />
 
-Task-10.GCD 1)
-<img width="1069" height="401" alt="Снимок экрана 2026-03-18 в 23 30 45" src="https://github.com/user-attachments/assets/de5c4924-a756-45e9-8931-097c03cf4c4f" />
-2)<img width="1069" height="406" alt="Снимок экрана 2026-03-18 в 23 32 17" src="https://github.com/user-attachments/assets/4b8d8ba5-5fe7-40da-bb43-d2cef8435153" />
+
+2)<img width="1353" height="541" alt="Снимок экрана 2026-03-19 в 00 11 39" src="https://github.com/user-attachments/assets/fedcc0b8-6e32-486e-ac07-920b2eb27bd3" />
+
+
+Task-10.GCD 1)<img width="1353" height="511" alt="Снимок экрана 2026-03-19 в 00 12 08" src="https://github.com/user-attachments/assets/dd187054-4d2e-49ff-b045-149f433e4bfc" />
+
+
+2)
+<img width="1353" height="582" alt="Снимок экрана 2026-03-19 в 00 12 51" src="https://github.com/user-attachments/assets/8fd978c0-90db-4011-bd6c-d728d387ffd9" />
 
 
