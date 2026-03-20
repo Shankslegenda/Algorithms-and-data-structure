@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class Main {
+    public static boolean aripTekseru(String s, int x) {
+        if (x == s.length()) return true;
+        if (!Character.isDigit(s.charAt(x))) return false;
+        return aripTekseru(s, x + 1);}
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        if (aripTekseru(s, 0)) System.out.println("Yes");
+        else System.out.println("No");
+    }
+}
