@@ -1,0 +1,20 @@
+import java.util.Scanner;
+public class Main{
+public static double qosyndysy(int n,int[] arr){
+    {
+    if(n==0) return 0;
+    return qosyndysy(n-1,arr)+arr[n-1];
+}
+}
+public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+     int n = sc.nextInt();
+     int[] numbers = new int[n];
+     for (int i = 0; i < n; i++) {
+         numbers[i] = sc.nextInt();}
+     double sum=qosyndysy(n,numbers);
+     double avg=sum/n;
+    System.out.println("Average sum:");
+    System.out.println(avg);
+}
+}
