@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class Main {
+    public static int dareje(int n,int pow) {
+        if(pow==0)return 1;
+        else{ return n*dareje(n,pow-1);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int pow=sc.nextInt();
+        System.out.println(dareje(n,pow));
+    }
+}
