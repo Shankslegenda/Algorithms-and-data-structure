@@ -1,0 +1,148 @@
+ort java.util.LinkedList;
+import java.util.Scanner;
+public class BankingSystemTask1 {
+    private LinkedList<BankAccount> accounts;
+    private Scanner scanner;
+    public BankingSystemTask1() {
+        accounts = new LinkedList<>();
+        scanner = new Scanner(System.in);
+    }
+    public void addAccount() {
+        System.out.println("Add New Account");
+        System.out.print("Enter ID: ");
+        String accNumber = scanner.nextLine();
+        System.out.print("Enter Username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter  Balance: ");
+        double balance = scanner.nextDouble();
+        scanner.nextLine();
+        BankAccount newAccount = new BankAccount(accNumber, username, balance);
+        accounts.add(newAccount);
+        System.out.println("Account added");
+    }
+    public void displayAllAccounts() {
+        System.out.println("All Accounts");
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts found.");
+            return;
+        }
+        System.out.println("Accounts:");
+        for (int i = 0; i < accounts.size(); i++) {
+            accounts.get(i).displayAccount(i + 1);
+        }
+    }
+    public BankAccount searchByUsername(String username) {
+        for (BankAccount account : accounts) {
+            if (account.getUsername().equalsIgnoreCase(username)) {
+                return account;
+            }
+        }
+        return null;
+    }
+    public void searchAndDisplayAccount() {
+        System.out.println("Search Account");
+        System.out.print("Enter username to search: ");
+        String searchName = scanner.nextLine();
+        BankAccount account = searchByUsername(searchName);
+        if (account != null) {
+            System.out.println("Account found!");
+            System.out.println("Username: " + account.getUsername());
+            System.out.println("Account Number: " + account.getAccountNumber());
+            System.out.println("Balance: " + account.getBalance());
+        } else {
+            System.out.println("No account found:" + searchName);
+        }
+    }
+    public void depositMoney() {
+        System.out.println("\n--- Deposit Money ---");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            System.out.print("Enter deposit amount: ");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            if (amount > 0) {
+                double newBalance = account.getBalance() + amount;
+                account.setBalance(newBalance);
+                System.out.println("Operation went successful!");
+                System.out.println("Balance: " + newBalance);
+            } else {
+                System.out.println("Invalid amount! Deposit amount must be positive.");
+            }
+        } else {
+            System.out.println(" Account not found!");
+        }
+    }
+    public void withdrawMoney() {
+        System.out.println(" Withdraw money");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            System.out.print("Enter withdraw amount: ");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            if (amount > 0) {
+                if (amount <= account.getBalance()) {
+                    double newBalance = account.getBalance() - amount;
+                    account.setBalance(newBalance);
+                    System.out.println("Operation went  successful!");
+                    System.out.println("balance:" + newBalance);
+                } else {
+                    System.out.println("Insufficient balance!");
+                    System.out.println("balance: " + account.getBalance());
+                }
+            } else {
+                System.out.println("Invalid amount! Withdraw amount must be positive.");
+            }
+        } else {
+            System.out.println("Account not found!");
+        }
+    }
+    public void showMenu() {
+        System.out.println("1. Add a new account");
+        System.out.println("2. Display all accounts");
+        System.out.println("3. Search account by username");
+        System.out.println("4. Deposit money");
+        System.out.println("5. Withdraw money");
+        System.out.println("6. Exit");
+    }
+    public void run() {
+        int choice;
+
+        do {
+            showMenu();
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    addAccount();
+                    break;
+                case 2:
+                    displayAllAccounts();
+                    break;
+                case 3:
+                    searchAndDisplayAccount();
+                    break;
+                case 4:
+                    depositMoney();
+                    break;
+                case 5:
+                    withdrawMoney();
+                    break;
+                case 6:
+                    System.out.println("Exiting Task 2...");
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        } while (choice != 6);
+        scanner.close();
+    }
+    public static void main(String[] args) {
+        BankingSystemTask1 bank = new BankingSystemTask1();
+        bank.run();
+    }
+}
