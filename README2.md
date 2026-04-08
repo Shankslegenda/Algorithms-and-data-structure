@@ -30,3 +30,15 @@ Task-3
 <img width="409" height="299" alt="Снимок экрана 2026-04-07 в 19 24 59" src="https://github.com/user-attachments/assets/5bbd239e-c21b-4609-b4f1-3b76fe4fa7c0" />
 
 
+
+
+Task-4
+1)
+
+
+<img width="409" height="730" alt="image" src="https://github.com/user-attachments/assets/82ce1f81-b248-4c02-af11-340b76970e54" />
+
+
+
+<img width="409" height="730" alt="image" src="https://github.com/user-attachments/assets/a632f8b8-37b6-43ed-95a6-9423920f4071" />
+
