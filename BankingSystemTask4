@@ -1,0 +1,277 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+public class BankingSystemTask1 {
+    private LinkedList<BankAccount> accounts;
+    private Queue<String> billQueue;  // Queue for bill payments (FIFO)
+    private Scanner scanner;
+    public BankingSystemTask1() {
+        accounts = new LinkedList<>();
+        billQueue = new LinkedList<>();
+        scanner = new Scanner(System.in);
+    }
+    public void addAccount() {
+        System.out.println("Add new account");
+        System.out.print("Enter account number: ");
+        String accNumber = scanner.nextLine();
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter balance: ");
+        double balance = scanner.nextDouble();
+        scanner.nextLine();
+        BankAccount newAccount = new BankAccount(accNumber, username, balance);
+        accounts.add(newAccount);
+        newAccount.addTransaction("Account created: " + balance);
+        System.out.println("Account added!");
+    }
+    public void displayAllAccounts() {
+        System.out.println("All Accounts");
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts found.");
+            return;
+        }
+        System.out.println("Accounts List:");
+        for (int i = 0; i < accounts.size(); i++) {
+            accounts.get(i).displayAccount(i + 1);
+        }
+    }
+    public BankAccount searchByUsername(String username) {
+        for (BankAccount account : accounts) {
+            if (account.getUsername().equalsIgnoreCase(username)) {
+                return account;
+            }
+        }
+        return null;
+    }
+    public void depositMoney() {
+        System.out.println(" Deposit Money");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            System.out.print("Enter deposit amount: ");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            if (amount > 0) {
+                double newBalance = account.getBalance() + amount;
+                account.setBalance(newBalance);
+                String transaction = "Deposit " + amount + " to " + username;
+                account.addTransaction(transaction);
+                System.out.println("Operation went successful!");
+                System.out.println("  New balance: " + newBalance);
+            } else {
+                System.out.println("Invalid amount!");
+            }
+        } else {
+            System.out.println("Account not found!");
+        }
+    }
+    public void withdrawMoney() {
+        System.out.println(" Withdraw Money ");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            System.out.print("Enter withdraw amount: ");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            if (amount > 0) {
+                if (amount <= account.getBalance()) {
+                    double newBalance = account.getBalance() - amount;
+                    account.setBalance(newBalance);
+                    String transaction = "Withdraw " + amount + " from " + username;
+                    account.addTransaction(transaction);
+                    System.out.println("Operation went successful!");
+                    System.out.println("New balance: " + newBalance);
+                } else {
+                    System.out.println("Insufficient balance!");
+                }
+            } else {
+                System.out.println(" Invalid amount!");
+            }
+        } else {
+            System.out.println("Account not found!");
+        }
+    }
+    public void addBillPayment() {
+        System.out.println(" Add Bill Payment Request");
+        System.out.print("Enter bill description: ");
+        String bill = scanner.nextLine();
+        billQueue.add(bill);
+        System.out.println("Added: " + bill);
+    }
+    public void processNextBill() {
+        System.out.println("Process Bill Payment");
+        if (billQueue.isEmpty()) {
+            System.out.println("No bills pending in queue.");
+            return;
+        }
+        String nextBill = billQueue.poll();
+        System.out.println("Processing: " + nextBill);
+        System.out.print("Enter username to pay this bill: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            System.out.print("Enter bill amount: ");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+            if (amount > 0 && amount <= account.getBalance()) {
+                double newBalance = account.getBalance() - amount;
+                account.setBalance(newBalance);
+                String transaction = "Paid " + nextBill + " - Amount: " + amount;
+                account.addTransaction(transaction);
+                System.out.println("Bill paid");
+                System.out.println("  New balance: " + newBalance);
+            } else {
+                System.out.println("invalid");
+            }
+        } else {
+            System.out.println("Account not found");
+        }
+        displayBillQueue();
+    }
+    public void displayBillQueue() {
+        System.out.println("Pending Bills Queue");
+        if (billQueue.isEmpty()) {
+            System.out.println("No pending bills.");
+        } else {
+            System.out.println("Bills waiting to be processed:");
+            int index = 1;
+            for (String bill : billQueue) {
+                System.out.println("  " + index + ". " + bill);
+                index++;
+            }
+        }
+    }
+    public void displayLastTransaction() {
+        System.out.println("Last Transaction");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            String lastTransaction = account.getLastTransaction();
+            if (lastTransaction != null) {
+                System.out.println("Last transaction: " + lastTransaction);
+            } else {
+                System.out.println("No transaction history found.");
+            }
+        } else {
+            System.out.println(" Account not found!");
+        }
+    }
+    public void undoLastTransaction() {
+        System.out.println("Undo Last Transaction");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            String undoneTransaction = account.undoLastTransaction();
+            if (undoneTransaction != null) {
+                System.out.println("Undo → " + undoneTransaction + " removed");
+                if (undoneTransaction.contains("Deposit")) {
+                    String[] parts = undoneTransaction.split(" ");
+                    double amount = Double.parseDouble(parts[1]);
+                    double newBalance = account.getBalance() - amount;
+                    account.setBalance(newBalance);
+                    System.out.println("  Deposit reversed. New balance: " + newBalance);
+                } else if (undoneTransaction.contains("Withdraw")) {
+                    String[] parts = undoneTransaction.split(" ");
+                    double amount = Double.parseDouble(parts[1]);
+                    double newBalance = account.getBalance() + amount;
+                    account.setBalance(newBalance);
+                    System.out.println("  Withdrawal reversed. New balance: " + newBalance);
+                } else if (undoneTransaction.contains("Paid")) {
+                    String[] parts = undoneTransaction.split(" ");
+                    double amount = Double.parseDouble(parts[parts.length - 1]);
+                    double newBalance = account.getBalance() + amount;
+                    account.setBalance(newBalance);
+                    System.out.println("  Bill payment reversed. New balance: " + newBalance);
+                }
+            } else {
+                System.out.println("No transactions to undo.");
+            }
+        } else {
+            System.out.println("✗ Account not found!");
+        }
+    }
+    public void displayTransactionHistory() {
+        System.out.println("\n--- Transaction History ---");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        BankAccount account = searchByUsername(username);
+        if (account != null) {
+            Stack<String> history = account.getTransactionHistory();
+            if (history.isEmpty()) {
+                System.out.println("No transaction history found.");
+            } else {
+                System.out.println("Transaction History for " + username + " (most recent first):");
+                Object[] historyArray = history.toArray();
+                for (int i = historyArray.length - 1; i >= 0; i--) {
+                    System.out.println("  " + (historyArray.length - i) + ". " + historyArray[i]);
+                }
+            }
+        } else {
+            System.out.println("✗ Account not found!");
+        }
+    }
+    public void showMenu() {
+        System.out.println("1. Add a new account");
+        System.out.println("2. Display all accounts");
+        System.out.println("3. Deposit money");
+        System.out.println("4. Withdraw money");
+        System.out.println("5. Add bill payment request");
+        System.out.println("6. Process next bill payment");
+        System.out.println("7. Display pending bills queue");
+        System.out.println("8. View last transaction");
+        System.out.println("9. Undo last transaction");
+        System.out.println("10. View full transaction history");
+        System.out.println("11. Exit");
+    }
+    public void run() {
+        int choice;
+        do {
+            showMenu();
+            choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    addAccount();
+                    break;
+                case 2:
+                    displayAllAccounts();
+                    break;
+                case 3:
+                    depositMoney();
+                    break;
+                case 4:
+                    withdrawMoney();
+                    break;
+                case 5:
+                    addBillPayment();
+                    break;
+                case 6:
+                    processNextBill();
+                    break;
+                case 7:
+                    displayBillQueue();
+                    break;
+                case 8:
+                    displayLastTransaction();
+                    break;
+                case 9:
+                    undoLastTransaction();
+                    break;
+                case 10:
+                    displayTransactionHistory();
+                    break;
+                case 11:
+                    System.out.println("\nExiting Task 4...");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+        } while (choice != 11);
+        scanner.close();
+    }
+}
