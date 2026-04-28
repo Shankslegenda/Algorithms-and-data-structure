@@ -1,0 +1,15 @@
+public class Experiment {
+    private Sorter sorter = new Sorter();
+    private Searcher searcher = new Searcher();
+    public long measureSortTime(int[] arr, String type) {
+        long start = System.nanoTime();
+        if (type.equals("basic")) sorter.basicSort(arr);
+        else if (type.equals("advanced")) sorter.advancedSort(arr);
+        return System.nanoTime() - start;
+    }
+    public long measureSearchTime(int[] arr, int target) {
+        long start = System.nanoTime();
+        searcher.search(arr, target);
+        return System.nanoTime() - start;
+    }
+}
