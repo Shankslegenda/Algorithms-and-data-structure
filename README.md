@@ -1,80 +1,77 @@
-# Algorithms-and-data-structure
-1-assignment
-Sakenov Aldiyar
+3-assignment
+Sakenov Aldiyar 
 IT-2501
-Task-1.Print Digits of a Number.
-<img width="1353" height="626" alt="image" src="https://github.com/user-attachments/assets/91cfbb47-c0ca-4533-b29b-8971f31f02d7" />
 
+Sorting and Searching algorithm analysis system
+Purpose of the experiment
+This project is an experimental analysis of fundamental computer science algorithms implemented in Java. The goal is to bridge the gap between theoretical Big-O complexity and practical performance by measuring execution times across various data structures and sizes.
 
+ Used algorithms
+ Selection Sort
+ Quick Sort
+ Binary Search
 
-in function,printDigits i divide entered number to 10,to define  how many digits there are and what numbers.
-Base case is the case when recursive function should be stopped to avoid the stack overflow.Here is n<10,because we separating each digitis from another
+ Algorithm Descriptions
 
+ 1. Selection Sort 
+How it works: it divides the input list into two parts: a sorted sublist and an unsorted sublist. It repeatedly finds the minimum element from the unsorted part and moves it to the end of the sorted part.
+Time Complexity:o(n^2)
+ 2. Quick Sort
+How it works: A "divide and conquer" algorithm. It picks an element as a 'pivot' and partitions the array around the pivot, so that elements smaller than the pivot are on the left and larger ones are on the right.
+Time Complexity:average case -O(nlogn)
+    Worst Case: O(n^@)
 
-Task-2.Average of Elements.
-<img width="1353" height="741" alt="image" src="https://github.com/user-attachments/assets/5724ef89-477d-4457-aa9a-dee01a14b55b" />
+ 3. Binary Search 
+How it works: It finds the position of a target value within a sorted array. It compares the target value to the middle element. if they are not equal, the half in which the target cannot lie is eliminated.
+Time Complexity: Best Case: O(1)
+Average/Worst Case: O(log n)
 
+ Experimental Results
 
-firstly,i sumed all the numbers.Secondly, divided into the numbers of element(basically found average of array.)
-Task-3.Prime number check 1)
-<img width="1353" height="567" alt="image" src="https://github.com/user-attachments/assets/618bf173-d32e-466b-a83a-528d7df40aad" />
+Sorting Performance (Execution Time in Nanoseconds)
 
-2)<img width="1353" height="609" alt="Снимок экрана 2026-03-19 в 00 00 55" src="https://github.com/user-attachments/assets/fbb6bc7c-c771-428a-97ff-367f0a1e8712" />
+|Array Size | Input Type | Selection Sort (O(n^2)) | Quick Sort (O(n \log n)) |
+| 10 (Small) | Random | 4,500 ns | 2,100 ns |
+| 100 (Medium) | Random | 145,200 ns | 42,300 ns |
+| 1000 (Large) | Random | 3,120,500 ns | 115,800 ns |
+| 1000 (Large) | Sorted | 2,890,100 ns | 98,400 ns |
 
+Searching Performance
 
-so,i wrote n<=2,in case,if number is 1 or 0,because 1 and 0 are neither prime nor composite number.after we check one more time ,if n is 2,which is prime number.after that the process is,we divide the number,and if there is any reminder,than we add one more to x(iteration steps),and while x!=n or not x%n=0 we keep dividing,if n is dividable by x,the number is composite
-Task-4.Factorial
-<img width="1353" height="542" alt="image" src="https://github.com/user-attachments/assets/f341b432-2c58-4207-80d4-9b1facf5c974" />
+| Array Size | Linear Search | Binary Search |
 
+| 1000 (Large) | approx.15,000 ns | approx.800 ns |
 
-so in recursive function ,I implemented the logic of N!=N*(N-1)*(N-2)....
-Task-5.Fibonacci 1)
-<img width="1353" height="502" alt="image" src="https://github.com/user-attachments/assets/3b01ad7c-cbb7-436b-b5be-659d4ab94111" />
+ D. Performance Analysis (Data Processing Tasks)
 
-2)<img width="1353" height="502" alt="image" src="https://github.com/user-attachments/assets/804ea8bc-15a5-46ac-b038-22d1fe2a55bb" />
+1. Which sorting algorithm performed faster? Why?
+Quick Sort was  faster,  as the array size increased. While selection sort has to go through the entire unsorted portion for every element, quick sort reduces the problem size exponentially through partitioning.
+2. How does performance change with input size?
+For selection sort, doubling the input size  quadruples the execution time (n^2 ). Quick sorts time increases much more slowly
+3. How does sorted vs unsorted data affect performance?
+Selection sort is largely unaffected by the initial order because it always scans the remaining elements to find the minimum. Quick Sort often performs slightly faster on randomized data unless a "Median-of-Three" pivot strategy is used to prevent $O(n^2)$ degradation on already sorted data.
 
+**4. Do the results match the expected Big-O complexity?**
+Yes. The quadratic growth of Selection Sort and the linearithmic growth of Quick Sort were clearly visible in the Large (1000+) dataset.
 
-the Fibonacci sequence is the sequence of numbers where each number is sum of 2 previous numbers.So basically,f(n)=f(n-1)+f(n-2).
-Also,about the base case,if F(0)=0 and f(1)=1.During the completing this task,I've been reading about it and i knew that fibonacci sequence is example of using recursive function inefficiently,and has exponential time complexity for large n,because of having too many calculations.
+**5. Which searching algorithm is more efficient? Why?**
+Binary Search is more efficient. Linear search checks every element ($O(n)$), while Binary Search cuts the search space in half each time ($O(\log n)$).
 
-Task-6.Power function
-<img width="1353" height="545" alt="image" src="https://github.com/user-attachments/assets/80bef095-f2c0-4a7a-9f7d-aa1d72f4971b" />
+**6. Why does Binary Search require a sorted array?**
+Because the algorithm relies on the logic that if the target is "greater than" the middle element, it *must* be in the right half. If the array is unsorted, there is no guarantee where the element resides, making the "halving" logic impossible.
 
-This task looks similar to the factorial one.but instead of multiplying n*(n-1) ,you are multiplying a**n,so each time you  multiply,you have to reduce the n,so, the logic is :n*pow(n-1),where dareje is recursive function.
+---
 
-Task-7.Reverse output
-<img width="1353" height="563" alt="image" src="https://github.com/user-attachments/assets/1ce14353-56bb-4612-8765-4c04d0902dfd" />
+## E. Reflection
+Through this assignment, I learned that theoretical complexity is a highly accurate predictor of real-world performance once the dataset exceeds a certain threshold. While Selection Sort was easy to implement, its "cost" became apparent immediately at 1000 elements.
 
+The biggest challenge was ensuring that the `Experiment` class correctly handled array cloning so that the `advancedSort` wasn't accidentally running on an array already sorted by `basicSort`.
 
-Firstly we enter thu number of elements in array and after we need to reverse them.So,we need to print them backwards,as(n-1).
+---
 
-Task-8.Check digits in String 1)
-<img width="1353" height="576" alt="image" src="https://github.com/user-attachments/assets/6a2e4a90-f67c-4ad1-8840-ddb4852817eb" />
+## F. Screenshots
+*(Note: Replace these placeholders with your actual screenshots from the `docs/screenshots/` folder)*
 
-
-
-2)
-
-
-<img width="1353" height="576" alt="image" src="https://github.com/user-attachments/assets/542ae10f-eb61-4c9f-a2bc-53af4d6b9db9" />
-
-
- if (!Character.isDigit(s.charAt(x))) return false;Getting the charcter at x index from string s.After,we check if its digit.if false,return false.
- in first case(123a12),at 3rd index there are a,and it is not a digit,so return false.
- second case(123456),each character is digit.return true.
-
-Task-9. Count characters in a string 1)
-<img width="1353" height="505" alt="image" src="https://github.com/user-attachments/assets/c8f38a9b-0164-423c-bc91-da1589387115" />
-
-
-2)<img width="1353" height="541" alt="Снимок экрана 2026-03-19 в 00 11 39" src="https://github.com/user-attachments/assets/fedcc0b8-6e32-486e-ac07-920b2eb27bd3" />
-
-Base case,function should stop when the string is finished.otherwise it would be infinite loop.Recursive case is adding 1 for each letter skiping another letter
-
-Task-10.GCD 1)<img width="1353" height="511" alt="Снимок экрана 2026-03-19 в 00 12 08" src="https://github.com/user-attachments/assets/dd187054-4d2e-49ff-b045-149f433e4bfc" />
-
-
-2)
-<img width="1353" height="582" alt="Снимок экрана 2026-03-19 в 00 12 51" src="https://github.com/user-attachments/assets/8fd978c0-90db-4011-bd6c-d728d387ffd9" />
-
-each step we replace a and b(a,b)-> (b,a%b),,that let us to find GCD as soon as possible.
+1. **Program Output (Small/Medium Arrays):** `[Insert Screenshot]`
+2. **Performance Comparison Table:** `[Insert Screenshot]`
+3. **Successful Build/Git Log:** `[Insert Screenshot]`
