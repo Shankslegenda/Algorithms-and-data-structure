@@ -4,7 +4,7 @@ IT-2501
 
 Sorting and Searching algorithm analysis system
 Purpose of the experiment
-This project is an experimental analysis of fundamental computer science algorithms implemented in Java. The goal is to bridge the gap between theoretical Big-O complexity and practical performance by measuring execution times across various data structures and sizes.
+This project is an experimental analysis of sorting and searching algorithms in java. The goal is to bridge the gap between theoretical Big-O complexity and practical performance by measuring execution times across various data structures and sizes.
 
  Used algorithms
  Selection Sort
@@ -19,7 +19,7 @@ Time Complexity:o(n^2)
  2. Quick Sort
 How it works: A "divide and conquer" algorithm. It picks an element as a 'pivot' and partitions the array around the pivot, so that elements smaller than the pivot are on the left and larger ones are on the right.
 Time Complexity:average case -O(nlogn)
-    Worst Case: O(n^@)
+    Worst Case: O(n^2)
 
  3. Binary Search 
 How it works: It finds the position of a target value within a sorted array. It compares the target value to the middle element. if they are not equal, the half in which the target cannot lie is eliminated.
@@ -42,8 +42,7 @@ Searching Performance
 
 | 1000 (Large) | approx.15,000 ns | approx.800 ns |
 
- D. Performance Analysis (Data Processing Tasks)
-
+ D. Performance analysis
 1. Which sorting algorithm performed faster? Why?
 Quick Sort was  faster,  as the array size increased. While selection sort has to go through the entire unsorted portion for every element, quick sort reduces the problem size exponentially through partitioning.
 2. How does performance change with input size?
@@ -55,11 +54,11 @@ Selection sort is largely unaffected by the initial order because it always scan
 Yes. The quadratic growth of Selection Sort and the linearithmic growth of Quick Sort were clearly visible in the Large (1000+) dataset.
 
 5. Which searching algorithm is more efficient? 
-Binary Search is more efficient. Linear search checks every element ($O(n)$), while Binary Search cuts the search space in half each time <img width="355" height="298" alt="Снимок экрана 2026-04-29 в 09 21 54" src="https://github.com/user-attachments/assets/5bc002c6-9f79-46fc-96fa-622cfe356d8f" />
+Binary Search is more efficient. Linear search checks every element (O(n)), while Binary Search cuts the search space in half each time <img width="355" height="298" alt="Снимок экрана 2026-04-29 в 09 21 54" src="https://github.com/user-attachments/assets/5bc002c6-9f79-46fc-96fa-622cfe356d8f" />
 O(\log n).
 
 6. Why does Binary Search require a sorted array?
-Because the algorithm relies on the logic that if the target is "greater than" the middle element, it *must* be in the right half. If the array is unsorted, there is no guarantee where the element resides, making the "halving" logic impossible.
+Because the algorithm relies on the logic that if the target is "greater than" the middle element, it must be in the right half. If the array is unsorted, there is no guarantee where the element resides, making the "halving" logic impossible.
 
 
  E. Conclusion(reflection session)
