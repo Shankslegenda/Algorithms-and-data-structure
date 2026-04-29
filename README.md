@@ -54,7 +54,7 @@ Selection sort is largely unaffected by the initial order because it always scan
 Yes. The quadratic growth of Selection Sort and the linearithmic growth of Quick Sort were clearly visible in the Large (1000+) dataset.
 
 5. Which searching algorithm is more efficient? 
-Binary Search is more efficient. Linear search checks every element (O(n)), while Binary Search cuts the search space in half each time <img width="355" height="298" alt="Снимок экрана 2026-04-29 в 09 21 54" src="https://github.com/user-attachments/assets/5bc002c6-9f79-46fc-96fa-622cfe356d8f" />
+Binary Search is more efficient. Linear search checks every element (O(n)), while Binary Search cuts the search space in half each time 
 O(\log n).
 
 6. Why does Binary Search require a sorted array?
