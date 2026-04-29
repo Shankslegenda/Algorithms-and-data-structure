@@ -51,27 +51,23 @@ For selection sort, doubling the input size  quadruples the execution time (n^2 
 3. How does sorted vs unsorted data affect performance?
 Selection sort is largely unaffected by the initial order because it always scans the remaining elements to find the minimum. Quick Sort often performs slightly faster on randomized data unless a "Median-of-Three" pivot strategy is used to prevent $O(n^2)$ degradation on already sorted data.
 
-**4. Do the results match the expected Big-O complexity?**
+4. Do the results match the expected Big-O complexity?
 Yes. The quadratic growth of Selection Sort and the linearithmic growth of Quick Sort were clearly visible in the Large (1000+) dataset.
 
-**5. Which searching algorithm is more efficient? Why?**
-Binary Search is more efficient. Linear search checks every element ($O(n)$), while Binary Search cuts the search space in half each time ($O(\log n)$).
+5. Which searching algorithm is more efficient? 
+Binary Search is more efficient. Linear search checks every element ($O(n)$), while Binary Search cuts the search space in half each time <img width="355" height="298" alt="Снимок экрана 2026-04-29 в 09 21 54" src="https://github.com/user-attachments/assets/5bc002c6-9f79-46fc-96fa-622cfe356d8f" />
+O(\log n).
 
-**6. Why does Binary Search require a sorted array?**
+6. Why does Binary Search require a sorted array?
 Because the algorithm relies on the logic that if the target is "greater than" the middle element, it *must* be in the right half. If the array is unsorted, there is no guarantee where the element resides, making the "halving" logic impossible.
 
----
 
-## E. Reflection
-Through this assignment, I learned that theoretical complexity is a highly accurate predictor of real-world performance once the dataset exceeds a certain threshold. While Selection Sort was easy to implement, its "cost" became apparent immediately at 1000 elements.
+ E. Conclusion(reflection session)
+Through this assignment, I understood that theoretical complexity is a highly accurate predictor of real-world performance once the dataset exceeds a certain threshold. While selection sort was easy to implement, its time complexity became very slow at 1000 elements.
 
-The biggest challenge was ensuring that the `Experiment` class correctly handled array cloning so that the `advancedSort` wasn't accidentally running on an array already sorted by `basicSort`.
+The biggest challenge was ensuring that 2 sorts works correctly,and data redundancy will not happen.
 
----
+ F. Screenshots
+output:
+<img width="355" height="334" alt="image" src="https://github.com/user-attachments/assets/d2c3b80a-33c5-4424-8d6b-fcd122d22021" />
 
-## F. Screenshots
-*(Note: Replace these placeholders with your actual screenshots from the `docs/screenshots/` folder)*
-
-1. **Program Output (Small/Medium Arrays):** `[Insert Screenshot]`
-2. **Performance Comparison Table:** `[Insert Screenshot]`
-3. **Successful Build/Git Log:** `[Insert Screenshot]`
