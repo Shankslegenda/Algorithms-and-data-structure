@@ -27,42 +27,24 @@ C. Algorithm Descriptions
 Step-by-step:
 
 Start at a source node and mark it as visited.
-
 Add the node to a Queue.
-
 While the queue is not empty:
-
 Dequeue a vertex and visit all its unvisited neighbors.
-
 Mark neighbors as visited and add them to the queue.
-
 Use Cases: Finding the shortest path in unweighted graphs, GPS navigation, and social networking (finding "friends of friends").
-
 Time Complexity: O(V+E)
-
 2. Depth-First Search (DFS)
-
 Step-by-step:
-
 Start at a source node and mark it as visited.
-
 Recursively (or using a Stack) visit the first unvisited neighbor.
-
 Continue "diving" deep into the graph until a node with no unvisited neighbors is reached.
-
 Backtrack to the previous node and repeat.
-
 Use Cases: Pathfinding in mazes, cycle detection in circuits, and topological sorting (scheduling tasks).
-
 Time Complexity: O(V+E)
 
 D. Data Processing & Analysis
 Experimental Results
-
-Vertices	BFS Time (ns)	DFS Time (ns)
-10	[Insert Value]	[Insert Value]
-30	[Insert Value]	[Insert Value]
-100	[Insert Value]	[Insert Value]
+<img width="524" height="315" alt="image" src="https://github.com/user-attachments/assets/29aaa1fe-98b3-44aa-9fc2-6ecea7345ae9" />
 Analysis Questions
 
 How does graph size affect BFS and DFS performance?
@@ -84,6 +66,7 @@ What are the limitations of DFS?
 DFS can get "lost" down a very deep or infinite branch. In Java, a very deep recursion can also cause a StackOverflowError.
 
 E. Reflection
-Through this assignment, I learned the practical trade-offs between BFS and DFS. While they have the same theoretical Big-O complexity, their behavior in memory is quite different—BFS requiring a Queue and DFS relying on the call stack.
+In this assignment,I learned the practical trade-offs between BFS and DFS. While they have the same theoretical Big-O complexity, their behavior in memory is quite different—BFS requiring a Queue and DFS relying on the call stack.
 
-One challenge I faced was ensuring the adjacency list was properly initialized for all vertices before adding edges, otherwise, a NullPointerException would occur. Overcoming this taught me the importance of robust constructor design in data structures.
+One challenge that  I had was ensuring the adjacency list was  initialized for all vertices before adding edges, otherwise, a NullPointerException would occur. Overcoming this taught me the importance of robust constructor design in data structures.
+
