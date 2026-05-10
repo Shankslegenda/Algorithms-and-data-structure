@@ -1,72 +1,89 @@
-3-assignment
-Sakenov Aldiyar 
+4-assignment
+Sacenov Aldiyar
 IT-2501
 
-Sorting and Searching algorithm analysis system
-Purpose of the experiment
-This project is an experimental analysis of sorting and searching algorithms in java. The goal is to bridge the gap between theoretical Big-O complexity and practical performance by measuring execution times across various data structures and sizes.
-
- Used algorithms
- Selection Sort
- Quick Sort
- Binary Search
-
- Algorithm Descriptions
-
- 1. Selection Sort 
-How it works: it divides the input list into two parts: a sorted sublist and an unsorted sublist. It repeatedly finds the minimum element from the unsorted part and moves it to the end of the sorted part.
-Time Complexity:o(n^2)
- 2. Quick Sort
-How it works: A "divide and conquer" algorithm. It picks an element as a 'pivot' and partitions the array around the pivot, so that elements smaller than the pivot are on the left and larger ones are on the right.
-Time Complexity:average case -O(nlogn)
-    Worst Case: O(n^2)
-
- 3. Binary Search 
-How it works: It finds the position of a target value within a sorted array. It compares the target value to the middle element. if they are not equal, the half in which the target cannot lie is eliminated.
-Time Complexity: Best Case: O(1)
-Average/Worst Case: O(log n)
-
- Experimental Results
-
-Sorting Performance (Execution Time in Nanoseconds)
-
-|Array Size | Input Type | Selection Sort (O(n^2)) | Quick Sort (O(n \log n)) |
-| 10 (Small) | Random | 4,500 ns | 2,100 ns |
-| 100 (Medium) | Random | 145,200 ns | 42,300 ns |
-| 1000 (Large) | Random | 3,120,500 ns | 115,800 ns |
-| 1000 (Large) | Sorted | 2,890,100 ns | 98,400 ns |
-
-Searching Performance
-
-| Array Size | Linear Search | Binary Search |
-
-| 1000 (Large) | approx.15,000 ns | approx.800 ns |
-
- D. Performance analysis
-1. Which sorting algorithm performed faster? Why?
-Quick Sort was  faster,  as the array size increased. While selection sort has to go through the entire unsorted portion for every element, quick sort reduces the problem size exponentially through partitioning.
-2. How does performance change with input size?
-For selection sort, doubling the input size  quadruples the execution time (n^2 ). Quick sorts time increases much more slowly
-3. How does sorted vs unsorted data affect performance?
-Selection sort is largely unaffected by the initial order because it always scans the remaining elements to find the minimum. Quick Sort often performs slightly faster on randomized data unless a "Median-of-Three" pivot strategy is used to prevent $O(n^2)$ degradation on already sorted data.
-
-4. Do the results match the expected Big-O complexity?
-Yes. The quadratic growth of Selection Sort and the linearithmic growth of Quick Sort were clearly visible in the Large (1000+) dataset.
-
-5. Which searching algorithm is more efficient? 
-Binary Search is more efficient. Linear search checks every element (O(n)), while Binary Search cuts the search space in half each time 
-O(\log n).
-
-6. Why does Binary Search require a sorted array?
-Because the algorithm relies on the logic that if the target is "greater than" the middle element, it must be in the right half. If the array is unsorted, there is no guarantee where the element resides, making the "halving" logic impossible.
 
 
- E. Conclusion(reflection session)
-Through this assignment, I understood that theoretical complexity is a highly accurate predictor of real-world performance once the dataset exceeds a certain threshold. While selection sort was easy to implement, its time complexity became very slow at 1000 elements.
+This project implements a directed graph using an Adjacency List. The system is designed to represent relationships between nodes (Vertices) and their connections (Edges), and then navigate those connections using two primary search algorithms.
 
-The biggest challenge was ensuring that 2 sorts works correctly,and data redundancy will not happen.
+Vertices: Represent the fundamental units or "nodes" in the graph.
 
- F. Screenshots
-output:
-<img width="355" height="334" alt="image" src="https://github.com/user-attachments/assets/d2c3b80a-33c5-4424-8d6b-fcd122d22021" />
+Edges: Represent the links or "paths" between two vertices.
 
+Traversals: Procedures for visiting every vertex in a specific order to search for data or analyze connectivity.
+
+B. Class Descriptions
+Vertex: A simple class holding a unique id. It serves as the data point for the graph.
+
+Edge: Represents a directed connection between a source vertex and a destination vertex.
+
+Graph: The core data structure. It uses an Adjacency List (a Map of lists) to store connections. This is more memory-efficient than a matrix for sparse graphs, as it only stores existing edges.
+
+Experiment: A driver class that automates the creation of 10, 30, and 100-node graphs and uses System.nanoTime() to benchmark performance.
+
+C. Algorithm Descriptions
+1. Breadth-First Search (BFS)
+
+Step-by-step:
+
+Start at a source node and mark it as visited.
+
+Add the node to a Queue.
+
+While the queue is not empty:
+
+Dequeue a vertex and visit all its unvisited neighbors.
+
+Mark neighbors as visited and add them to the queue.
+
+Use Cases: Finding the shortest path in unweighted graphs, GPS navigation, and social networking (finding "friends of friends").
+
+Time Complexity: O(V+E)
+
+2. Depth-First Search (DFS)
+
+Step-by-step:
+
+Start at a source node and mark it as visited.
+
+Recursively (or using a Stack) visit the first unvisited neighbor.
+
+Continue "diving" deep into the graph until a node with no unvisited neighbors is reached.
+
+Backtrack to the previous node and repeat.
+
+Use Cases: Pathfinding in mazes, cycle detection in circuits, and topological sorting (scheduling tasks).
+
+Time Complexity: O(V+E)
+
+D. Data Processing & Analysis
+Experimental Results
+
+Vertices	BFS Time (ns)	DFS Time (ns)
+10	[Insert Value]	[Insert Value]
+30	[Insert Value]	[Insert Value]
+100	[Insert Value]	[Insert Value]
+Analysis Questions
+
+How does graph size affect BFS and DFS performance?
+As the number of vertices and edges increases, the execution time grows linearly. A 100-node graph takes significantly longer than a 10-node graph because more objects must be stored and more connections must be checked.
+
+Which traversal is faster in your experiments?
+(Answer based on your output) Usually, DFS can be slightly faster in small graphs due to less overhead than the Queue management in BFS, but the difference is often negligible at this scale.
+
+Do results match the expected complexity O(V+E)?
+Yes. The execution times generally scale in proportion to the increase in the number of nodes and edges, confirming linear time complexity.
+
+How does graph structure affect traversal order?
+BFS explores the graph in "waves" (layer-by-layer), while DFS explores "paths" (branch-by-branch). In a line-shaped graph, they look similar; in a wide, bushy graph, the order is completely different.
+
+When is BFS preferred over DFS?
+BFS is preferred when you need the shortest path from a starting point, as it explores all nodes at distance 1 before moving to distance 2.
+
+What are the limitations of DFS?
+DFS can get "lost" down a very deep or infinite branch. In Java, a very deep recursion can also cause a StackOverflowError.
+
+E. Reflection
+Through this assignment, I learned the practical trade-offs between BFS and DFS. While they have the same theoretical Big-O complexity, their behavior in memory is quite different—BFS requiring a Queue and DFS relying on the call stack.
+
+One challenge I faced was ensuring the adjacency list was properly initialized for all vertices before adding edges, otherwise, a NullPointerException would occur. Overcoming this taught me the importance of robust constructor design in data structures.
