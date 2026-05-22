@@ -1,0 +1,98 @@
+import java.util.*;
+public class Graph {
+    private final Map<Integer, List<Edge>> adjList;
+    private final int numVertices;
+    public Graph(int numVertices) {
+        this.numVertices = numVertices;
+        this.adjList = new HashMap<>();
+        for (int i = 0; i < numVertices; i++) {
+            adjList.put(i, new LinkedList<>());
+        }
+    }
+    public void addEdge(int from, int to, int weight) {
+        Vertex src = new Vertex(from);
+        Vertex dest = new Vertex(to);
+        Edge edge = new Edge(src, dest, weight);
+        adjList.get(from).add(edge);
+    }
+    public void addEdge(int from, int to) {
+        addEdge(from, to, 1);
+    }
+
+    public void dijkstra(int start) {
+        int[] distances = new int[numVertices];
+        boolean[] visited = new boolean[numVertices];
+        Arrays.fill(distances, Integer.MAX_VALUE);
+        distances[start] = 0;
+        for (int i = 0; i < numVertices; i++) {
+            int u = findMinDistanceVertex(distances, visited);
+            if (u == -1) break;
+            visited[u] = true;
+            for (Edge edge : adjList.get(u)) {
+                int v = edge.getDestination().getId();
+                int weight = edge.getWeight();
+
+                if (!visited[v] && distances[u] != Integer.MAX_VALUE
+                        && distances[u] + weight < distances[v]) {
+                    distances[v] = distances[u] + weight;
+                }
+            }
+        }
+        printDijkstraResults(start, distances);
+    }
+    private int findMinDistanceVertex(int[] distances, boolean[] visited) {
+        int minDistance = Integer.MAX_VALUE;
+        int minVertex = -1;
+
+        for (int v = 0; v < numVertices; v++) {
+            if (!visited[v] && distances[v] <= minDistance) {
+                minDistance = distances[v];
+                minVertex = v;
+            }
+        }
+        return minVertex;
+    }
+
+    private void printDijkstraResults(int start, int[] distances) {
+        System.out.println("\n--- Dijkstra Shortest Paths from Vertex " + start + " ---");
+        System.out.printf("%-10s %-15s\n", "Vertex", "Distance");
+        for (int i = 0; i < numVertices; i++) {
+            String distStr = (distances[i] == Integer.MAX_VALUE) ? "Infinity" : String.valueOf(distances[i]);
+            System.out.printf("%-10d %-15s\n", i, distStr);
+        }
+    }
+
+    public void bfs(int start) {
+        boolean[] visited = new boolean[numVertices];
+        Queue<Integer> queue = new LinkedList<>();
+        visited[start] = true;
+        queue.add(start);
+        while (!queue.isEmpty()) {
+            int curr = queue.poll();
+            if (numVertices <= 10) System.out.print(curr + " ");
+            for (Edge edge : adjList.get(curr)) {
+                int neighbor = edge.getDestination().getId();
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.add(neighbor);
+                }
+            }
+        }
+    }
+
+    public void dfs(int start) {
+        boolean[] visited = new boolean[numVertices];
+        dfsRecursive(start, visited);
+    }
+
+    private void dfsRecursive(int curr, boolean[] visited) {
+        visited[curr] = true;
+        if (numVertices <= 10) System.out.print(curr + " ");
+        for (Edge edge : adjList.get(curr)) {
+            int neighbor = edge.getDestination().getId();
+            if (!visited[neighbor]) {
+                dfsRecursive(neighbor, visited);
+            }
+        }
+    }
+}
